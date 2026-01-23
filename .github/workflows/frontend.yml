@@ -21,7 +21,7 @@ jobs:
           docker build \
             --build-arg REACT_APP_NODE_ENV=production \
             --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/foodweb-frontend:latest ./Frontend/FoodWeb
+            -t debdeep12/foodweb-frontend:latest ./Frontend/Food Website
       - name: Push Food Web Frontend
         run: docker push debdeep12/foodweb-frontend:latest
 
@@ -31,7 +31,7 @@ jobs:
           docker build \
             --build-arg REACT_APP_NODE_ENV=production \
             --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/deliveryboy-frontend:latest ./Frontend/DeliveryBoy
+            -t debdeep12/deliveryboy-frontend:latest ./Frontend/Delivary Boy
       - name: Push Delivery Boy Frontend
         run: docker push debdeep12/deliveryboy-frontend:latest
 
@@ -41,7 +41,7 @@ jobs:
           docker build \
             --build-arg REACT_APP_NODE_ENV=production \
             --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/admin-frontend:latest ./Frontend/Admin
+            -t debdeep12/admin-frontend:latest ./Frontend/Admin_Food Frontend Website
       - name: Push Admin Frontend
         run: docker push debdeep12/admin-frontend:latest
 
