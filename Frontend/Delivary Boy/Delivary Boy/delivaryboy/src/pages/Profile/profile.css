@@ -1,0 +1,280 @@
+/* .profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f5f5f5;
+  min-height: 90vh;
+}
+
+.profile-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.profile-pic-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-upload-label {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007bff20;
+  transition: transform 0.3s ease;
+}
+
+.camera-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.profile-pic-container:hover .camera-overlay {
+  opacity: 1;
+}
+.profile-box h2 {
+  font-size: 22px;
+  margin: 10px 0 5px;
+  color: #333;
+  font-weight: 600;
+}
+
+.profile-box p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.profile-actions button {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.profile-actions button:first-child {
+  background: #007bff;
+  color: white;
+}
+
+.profile-actions button:first-child:hover {
+  background: #0069d9;
+}
+
+.profile-actions .delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.profile-actions .delete-btn:hover {
+  background: #c82333;
+} 
+  
+.food-counter {
+  font-size: 15px;
+  color: #444;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  min-height: 90vh;
+  margin-top: -120px;
+  margin-bottom: -210px;
+}
+
+.profile-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.profile-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile Picture Section */
+.profile-pic-container {
+  position: relative;
+  margin-bottom: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007bff20;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.03);
+}
+
+/* Camera icon inside profile picture */
+.camera-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+.profile-pic-container:hover .camera-overlay {
+  opacity: 1;
+}
+
+/* Text */
+.profile-box h2 {
+  font-size: 24px;
+  margin: 10px 0 5px;
+  color: #333;
+  font-weight: 600;
+}
+
+.profile-box p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Action Buttons */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.profile-actions button {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.profile-actions button:hover {
+  transform: translateY(-1px);
+}
+
+.profile-actions button:first-child {
+  background: #007bff;
+  color: white;
+}
+
+.profile-actions button:first-child:hover {
+  background: #0069d9;
+}
+
+.profile-actions .delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.profile-actions .delete-btn:hover {
+  background: #c82333;
+}
+
+.user-cart {
+  font-size: 14px;
+  color: #17a2b8;
+  font-weight: 500;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.user-email {
+  margin: 3px 0 !important;   /* reduce vertical spacing */
+  font-size: 14px;
+  color: #555;
+}
+
+.user-info-group {
+  margin-bottom: 10px;
+}
+
+.user-email {
+  margin: 3px 0 !important;
+}
+
+
