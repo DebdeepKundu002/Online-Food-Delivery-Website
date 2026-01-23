@@ -1,0 +1,84 @@
+name: Deploy React Frontend Applications
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      # Food Web (default 80)
+      - name: Build Food Web Frontend
+        run: |
+          docker build \
+            --build-arg REACT_APP_NODE_ENV=production \
+            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/foodweb-frontend:latest ./Frontend/FoodWeb
+      - name: Push Food Web Frontend
+        run: docker push debdeep12/foodweb-frontend:latest
+
+      # Delivery Boy (port 3000)
+      - name: Build Delivery Boy Frontend
+        run: |
+          docker build \
+            --build-arg REACT_APP_NODE_ENV=production \
+            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/deliveryboy-frontend:latest ./Frontend/DeliveryBoy
+      - name: Push Delivery Boy Frontend
+        run: docker push debdeep12/deliveryboy-frontend:latest
+
+      # Admin (port 9000)
+      - name: Build Admin Frontend
+        run: |
+          docker build \
+            --build-arg REACT_APP_NODE_ENV=production \
+            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/admin-frontend:latest ./Frontend/Admin
+      - name: Push Admin Frontend
+        run: docker push debdeep12/admin-frontend:latest
+
+      # Food Owner / Food Court (port 4000)
+      - name: Build Food Owner Frontend
+        run: |
+          docker build \
+            --build-arg REACT_APP_NODE_ENV=production \
+            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/foodowner-frontend:latest ./Frontend/FoodOwner
+      - name: Push Food Owner Frontend
+        run: docker push debdeep12/foodowner-frontend:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      # Food Web
+      - name: Deploy Food Web
+        run: |
+          docker rm -f foodweb-container || true
+          docker run -d --name foodweb-container -p 80:80 debdeep12/foodweb-frontend:latest
+
+      # Delivery Boy
+      - name: Deploy Delivery Boy
+        run: |
+          docker rm -f deliveryboy-container || true
+          docker run -d --name deliveryboy-container -p 3000:80 debdeep12/deliveryboy-frontend:latest
+
+      # Admin
+      - name: Deploy Admin
+        run: |
+          docker rm -f admin-container || true
+          docker run -d --name admin-container -p 9000:80 debdeep12/admin-frontend:latest
+
+      # Food Owner / Food Court
+      - name: Deploy Food Owner
+        run: |
+          docker rm -f foodowner-container || true
+          docker run -d --name foodowner-container -p 4000:80 debdeep12/foodowner-frontend:latest

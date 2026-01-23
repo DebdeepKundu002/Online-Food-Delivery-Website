@@ -1,0 +1,48 @@
+name: Deploy Node Backend Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Backend Docker Image
+        run: docker build -t debdeep12/backend-app:latest .
+
+      - name: Push Backend Docker Image
+        run: docker push debdeep12/backend-app:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull debdeep12/backend-app:latest
+
+      - name: Stop and remove old container
+        run: docker rm -f backend-container || true
+
+      - name: Run backend container
+        run: |
+          docker run -d \
+            --name backend-container \
+            -p 8000:8000 \
+            -e PORT=${{ secrets.PORT }} \
+            -e MONGO_URL="${{ secrets.MONGO_URL }}" \
+            -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+            -e CLOUD_NAME="${{ secrets.CLOUD_NAME }}" \
+            -e API_KEY="${{ secrets.API_KEY }}" \
+            -e API_SECRET="${{ secrets.API_SECRET }}" \
+            -e GMAIL_USER="${{ secrets.GMAIL_USER }}" \
+            -e GMAIL_PASS="${{ secrets.GMAIL_PASS }}" \
+            -e FRONTEND_URL="${{ secrets.FRONTEND_URL }}" \
+            yourdockerhubusername/backend-app:latest
