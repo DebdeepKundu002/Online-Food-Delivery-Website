@@ -49,4 +49,5 @@ jobs:
             -e GMAIL_USER="${{ secrets.GMAIL_USER }}" \
             -e GMAIL_PASS="${{ secrets.GMAIL_PASS }}" \
             -e FRONTEND_URL="${{ secrets.FRONTEND_URL }}" \
+            -e FRONTEND_URLS="${{ secrets.FRONTEND_URLS }}" \
             debdeep12/backend-app:latest

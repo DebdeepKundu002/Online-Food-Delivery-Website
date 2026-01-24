@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import foodCounterRoute from "./routes/food_counter.route.js";
@@ -13,76 +14,79 @@ import CartRoute from "./routes/cart.route.js";
 import OrderRoute from "./routes/order.route.js";
 import reviewRoute from "./routes/review.route.js";
 import wishlistRoute from "./routes/wishlist.route.js";
-import aboutAdmin  from "./routes/aboutAdmin.route.js";
-import deliveryBoy  from "./routes/deliveryBoy.routes.js";
+import aboutAdmin from "./routes/aboutAdmin.route.js";
+import deliveryBoy from "./routes/deliveryBoy.routes.js";
 
-dotenv.config({});
+dotenv.config();
 
 const app = express();
 
-// app.use(cors({
-//     origin: "*"
-// }));
+/* =======================
+   Middleware
+======================= */
 
-app.use(express.json()); //body-parser
-app.use(express.urlencoded({extended:true})); //body-parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// const allowedOrigins = [
-//   'http://localhost:5173',
-//   'http://localhost:5174',
-//   'http://localhost:5175',
-//   'http://localhost:5176',
-// ];
 
+/* =======================
+   CORS CONFIG (FIXED)
+======================= */
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     // allow requests with no origin (like Postman)
-//     if (!origin) return callback(null, true);
+const allowedOrigins = process.env.FRONTEND_URLS
+  ? process.env.FRONTEND_URLS.split(",")
+  : [];
 
-//     if (allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true,
-// };
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow Postman, curl, server-to-server
+      if (!origin) return callback(null, true);
 
-// app.use(cors(corsOptions));
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-app.use(cors({
-    origin: '*',
-    credentials: true, // optional: can cause issues with '*' if you send credentials
-}));
+      console.error("CORS BLOCKED:", origin);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-//2
- 
-const PORT = process.env.PORT || 3000;
+// Preflight support
+app.options("*", cors());
 
-//Get all Method
-app.get('/', (req, res) => {
-    res.send('Welcome in Food Project')
-})
+/* =======================
+   Routes
+======================= */
 
-// api's
+app.get("/", (req, res) => {
+  res.send("Welcome in Food Project");
+});
+
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/foodCounter", foodCounterRoute);
 app.use("/api/v1/food", foodRoute);
 app.use("/api/v1/application", applicationRoute);
 app.use("/api/v1/adminRoute", adminRoute);
-app.use("/api/v1/paymentGetway",paymentGetway);
-app.use("/api/v1/cart",CartRoute);
+app.use("/api/v1/paymentGetway", paymentGetway);
+app.use("/api/v1/cart", CartRoute);
 app.use("/api/v1/order", OrderRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/wishlist", wishlistRoute);
 app.use("/api/v1/aboutAdmin", aboutAdmin);
 app.use("/api/v1/deliveryBoy", deliveryBoy);
 
+/* =======================
+   Server
+======================= */
 
+const PORT = process.env.PORT || 8000;
 
-
-app.listen(PORT,()=>{
-    connectDB();
-    console.log(`Server running at port ${PORT}`);
-})
+app.listen(PORT, () => {
+  connectDB();
+  console.log(`🚀 Server running on port ${PORT}`);
+});
