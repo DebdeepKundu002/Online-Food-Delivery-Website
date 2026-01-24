@@ -18,9 +18,9 @@ jobs:
       - name: Build Backend Docker Image
         run: |
           docker build \
-            -f "Backend Displater Backend Displater Backend/Dockerfile" \
+            -f "Backend/Displater_Backend/Displater_Backend/Backend/Dockerfile" \
             -t debdeep12/backend-app:latest \
-            "Backend Displater Backend Displater Backend"
+            "Backend/Displater_Backend/Displater_Backend/Backend"
 
       - name: Push Backend Docker Image
         run: docker push debdeep12/backend-app:latest

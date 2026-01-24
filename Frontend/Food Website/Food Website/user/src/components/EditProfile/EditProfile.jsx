@@ -213,7 +213,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Editprofile.css";
+import "./EditProfile.css";
 import { useAuth } from "../../components/Context/AuthContext";
 
 const EditProfile = () => {
