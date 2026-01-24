@@ -17,7 +17,7 @@ jobs:
 
       - name: Build Backend Docker Image
         run: |
-          sudo docker build \
+          sudo docker build --no-cache \
             -f Backend/Displater_Backend/Displater_Backend/Backend/Dockerfile \
             -t debdeep12/backend-app:latest \
             Backend/Displater_Backend/Displater_Backend/Backend
