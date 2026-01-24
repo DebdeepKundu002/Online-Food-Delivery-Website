@@ -16,7 +16,11 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Backend Docker Image
-        run: docker build -t debdeep12/backend-app:latest .
+        run: |
+          docker build \
+            -f "Backend Displater Backend Displater Backend/Dockerfile" \
+            -t debdeep12/backend-app:latest \
+            "Backend Displater Backend Displater Backend"
 
       - name: Push Backend Docker Image
         run: docker push debdeep12/backend-app:latest
@@ -45,4 +49,4 @@ jobs:
             -e GMAIL_USER="${{ secrets.GMAIL_USER }}" \
             -e GMAIL_PASS="${{ secrets.GMAIL_PASS }}" \
             -e FRONTEND_URL="${{ secrets.FRONTEND_URL }}" \
-            yourdockerhubusername/backend-app:latest
+            debdeep12/backend-app:latest

@@ -15,46 +15,51 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      # Food Web (default 80)
+      # Food Web
       - name: Build Food Web Frontend
         run: |
           docker build \
-            --build-arg REACT_APP_NODE_ENV=production \
-            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/foodweb-frontend:latest "./Frontend/Food Website"
-            
+            -f "Frontend/Food Website/Food Website/user/Dockerfile" \
+            --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/foodweb-frontend:latest \
+            "Frontend/Food Website/Food Website/user"
+
       - name: Push Food Web Frontend
         run: docker push debdeep12/foodweb-frontend:latest
 
-      # Delivery Boy (port 3000)
+      # Delivery Boy
       - name: Build Delivery Boy Frontend
         run: |
           docker build \
-            --build-arg REACT_APP_NODE_ENV=production \
-            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/deliveryboy-frontend:latest "./Frontend/Delivary Boy"
+            -f "Frontend/Delivary Boy/Delivary Boy/delivaryboy/Dockerfile" \
+            --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/deliveryboy-frontend:latest \
+            "Frontend/Delivary Boy/Delivary Boy/delivaryboy"
 
-            
       - name: Push Delivery Boy Frontend
         run: docker push debdeep12/deliveryboy-frontend:latest
 
-      # Admin (port 9000)
+      # Admin
       - name: Build Admin Frontend
         run: |
           docker build \
-            --build-arg REACT_APP_NODE_ENV=production \
-            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/admin-frontend:latest "./Frontend/Admin_Food Frontend Website"
+            -f "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend/Dockerfile" \
+            --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/admin-frontend:latest \
+            "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend"
+
       - name: Push Admin Frontend
         run: docker push debdeep12/admin-frontend:latest
 
-      # Food Owner / Food Court (port 4000)
+      # Food Owner
       - name: Build Food Owner Frontend
         run: |
           docker build \
-            --build-arg REACT_APP_NODE_ENV=production \
-            --build-arg REACT_APP_SERVER_BASE_URL=${{ secrets.VITE_API_URL }} \
-            -t debdeep12/foodowner-frontend:latest "./Frontend/FoodOwner"
+            -f "Frontend/FoodOwner/FoodOwner/foodowner/Dockerfile" \
+            --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+            -t debdeep12/foodowner-frontend:latest \
+            "Frontend/FoodOwner/FoodOwner/foodowner"
+
       - name: Push Food Owner Frontend
         run: docker push debdeep12/foodowner-frontend:latest
 
@@ -62,25 +67,21 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      # Food Web
       - name: Deploy Food Web
         run: |
           docker rm -f foodweb-container || true
           docker run -d --name foodweb-container -p 80:80 debdeep12/foodweb-frontend:latest
 
-      # Delivery Boy
       - name: Deploy Delivery Boy
         run: |
           docker rm -f deliveryboy-container || true
           docker run -d --name deliveryboy-container -p 3000:80 debdeep12/deliveryboy-frontend:latest
 
-      # Admin
       - name: Deploy Admin
         run: |
           docker rm -f admin-container || true
           docker run -d --name admin-container -p 9000:80 debdeep12/admin-frontend:latest
 
-      # Food Owner / Food Court
       - name: Deploy Food Owner
         run: |
           docker rm -f foodowner-container || true
