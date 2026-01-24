@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Snowfall from 'react-snowfall';
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/footer';
+import Footer from './components/Footer/Footer';
 import DeliveryCart from './pages/DeliveryCart/DeliveryCart';
 import EditProfile from './pages/EditProfile/editProfile';
 import Profile from './pages/Profile/profile';
