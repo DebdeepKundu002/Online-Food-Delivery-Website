@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./ViewFoodcart.css";
+import "./ViewFoodCart.css";
 
 const ViewFoodcart = () => {
   const [restaurants, setRestaurants] = useState([]);
