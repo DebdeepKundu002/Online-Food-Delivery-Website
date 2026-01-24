@@ -71,7 +71,7 @@ jobs:
       - name: Deploy Food Web
         run: |
           sudo docker rm -f foodweb-container || true
-          sudo docker run -d --name foodweb-container -p 80:80 debdeep12/foodweb-frontend:latest
+          sudo docker run -d --name foodweb-container -p 8080:80 debdeep12/foodweb-frontend:latest
 
       # Deploy Delivery Boy
       - name: Deploy Delivery Boy
