@@ -61,9 +61,9 @@ app.use(cors({
 const PORT = process.env.PORT || 3000;
 
 //Get all Method
-// app.get('/', (req, res) => {
-//     res.send('Welcome in Food Project')
-// })
+app.get('/', (req, res) => {
+    res.send('Welcome in Food Project')
+})
 
 // api's
 app.use("/api/v1/user", userRoute);
