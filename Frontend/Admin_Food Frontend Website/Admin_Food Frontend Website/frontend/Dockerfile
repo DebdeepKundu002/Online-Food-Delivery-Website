@@ -10,11 +10,9 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Build arguments for environment variables
-ARG REACT_APP_NODE_ENV
-ARG REACT_APP_SERVER_BASE_URL
-ENV REACT_APP_NODE_ENV=$REACT_APP_NODE_ENV
-ENV REACT_APP_SERVER_BASE_URL=$REACT_APP_SERVER_BASE_URL
+# ✅ Vite environment variable
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 
 # Build the frontend
 RUN npm run build

@@ -3,23 +3,27 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
+# Install dependencies
 COPY package*.json ./
 RUN npm install
 
+# Copy source
 COPY . .
 
-ARG REACT_APP_NODE_ENV
-ARG REACT_APP_SERVER_BASE_URL
-ENV REACT_APP_NODE_ENV=$REACT_APP_NODE_ENV
-ENV REACT_APP_SERVER_BASE_URL=$REACT_APP_SERVER_BASE_URL
+# ✅ Vite environment variable
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 
+# Build
 RUN npm run build
 
 # ---------- Production Stage ----------
 FROM nginx:1.23-alpine
 
+# Clean default nginx content
 RUN rm -rf /usr/share/nginx/html/*
 
+# Copy build output
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
