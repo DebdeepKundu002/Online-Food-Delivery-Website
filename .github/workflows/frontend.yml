@@ -13,76 +13,80 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        run: sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      # Food Web
+      # Food Web Frontend
       - name: Build Food Web Frontend
         run: |
-          docker build \
+          sudo docker build --no-cache \
             -f "Frontend/Food Website/Food Website/user/Dockerfile" \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             -t debdeep12/foodweb-frontend:latest \
             "Frontend/Food Website/Food Website/user"
 
       - name: Push Food Web Frontend
-        run: docker push debdeep12/foodweb-frontend:latest
+        run: sudo docker push debdeep12/foodweb-frontend:latest
 
-      # Delivery Boy
+      # Delivery Boy Frontend
       - name: Build Delivery Boy Frontend
         run: |
-          docker build \
+          sudo docker build --no-cache \
             -f "Frontend/Delivary Boy/Delivary Boy/delivaryboy/Dockerfile" \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             -t debdeep12/deliveryboy-frontend:latest \
             "Frontend/Delivary Boy/Delivary Boy/delivaryboy"
 
       - name: Push Delivery Boy Frontend
-        run: docker push debdeep12/deliveryboy-frontend:latest
+        run: sudo docker push debdeep12/deliveryboy-frontend:latest
 
-      # Admin
+      # Admin Frontend
       - name: Build Admin Frontend
         run: |
-          docker build \
+          sudo docker build --no-cache \
             -f "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend/Dockerfile" \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             -t debdeep12/admin-frontend:latest \
             "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend"
 
       - name: Push Admin Frontend
-        run: docker push debdeep12/admin-frontend:latest
+        run: sudo docker push debdeep12/admin-frontend:latest
 
-      # Food Owner
+      # Food Owner Frontend
       - name: Build Food Owner Frontend
         run: |
-          docker build \
+          sudo docker build --no-cache \
             -f "Frontend/FoodOwner/FoodOwner/foodowner/Dockerfile" \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             -t debdeep12/foodowner-frontend:latest \
             "Frontend/FoodOwner/FoodOwner/foodowner"
 
       - name: Push Food Owner Frontend
-        run: docker push debdeep12/foodowner-frontend:latest
+        run: sudo docker push debdeep12/foodowner-frontend:latest
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
+      # Deploy Food Web
       - name: Deploy Food Web
         run: |
-          docker rm -f foodweb-container || true
-          docker run -d --name foodweb-container -p 80:80 debdeep12/foodweb-frontend:latest
+          sudo docker rm -f foodweb-container || true
+          sudo docker run -d --name foodweb-container -p 80:80 debdeep12/foodweb-frontend:latest
 
+      # Deploy Delivery Boy
       - name: Deploy Delivery Boy
         run: |
-          docker rm -f deliveryboy-container || true
-          docker run -d --name deliveryboy-container -p 3000:80 debdeep12/deliveryboy-frontend:latest
+          sudo docker rm -f deliveryboy-container || true
+          sudo docker run -d --name deliveryboy-container -p 3000:80 debdeep12/deliveryboy-frontend:latest
 
+      # Deploy Admin
       - name: Deploy Admin
         run: |
-          docker rm -f admin-container || true
-          docker run -d --name admin-container -p 9000:80 debdeep12/admin-frontend:latest
+          sudo docker rm -f admin-container || true
+          sudo docker run -d --name admin-container -p 9000:80 debdeep12/admin-frontend:latest
 
+      # Deploy Food Owner
       - name: Deploy Food Owner
         run: |
-          docker rm -f foodowner-container || true
-          docker run -d --name foodowner-container -p 4000:80 debdeep12/foodowner-frontend:latest
+          sudo docker rm -f foodowner-container || true
+          sudo docker run -d --name foodowner-container -p 4000:80 debdeep12/foodowner-frontend:latest
