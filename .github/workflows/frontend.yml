@@ -17,7 +17,18 @@ jobs:
 
       # Food Web Frontend
       - name: Build Food Web Frontend
-        run: sudo docker build --no-cache -f "Frontend/Food Website/Food Website/user/Dockerfile" --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} --build-arg VITE_RAZORPAY_KEY=${{ secrets.VITE_RAZORPAY_KEY }} --build-arg VITE_FACEBOOK_1=${{ secrets.VITE_FACEBOOK_1 }} --build-arg VITE_FACEBOOK_2=${{ secrets.VITE_FACEBOOK_2 }} --build-arg VITE_LINKEDIN_1=${{ secrets.VITE_LINKEDIN_1 }} --build-arg VITE_LINKEDIN_2=${{ secrets.VITE_LINKEDIN_2 }} -t debdeep12/foodweb-frontend:latest "Frontend/Food Website/Food Website/user" 
+        run: |
+          sudo docker build --no-cache \
+          -f "Frontend/Food Website/Food Website/user/Dockerfile" \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} \
+          --build-arg VITE_RAZORPAY_KEY=${{ secrets.VITE_RAZORPAY_KEY }} \
+          --build-arg VITE_FACEBOOK_1=${{ secrets.VITE_FACEBOOK_1 }} \
+          --build-arg VITE_FACEBOOK_2=${{ secrets.VITE_FACEBOOK_2 }} \
+          --build-arg VITE_LINKEDIN_1=${{ secrets.VITE_LINKEDIN_1 }} \
+          --build-arg VITE_LINKEDIN_2=${{ secrets.VITE_LINKEDIN_2 }} \
+          -t debdeep12/foodweb-frontend:latest \
+          "Frontend/Food Website/Food Website/user"
 
       - name: Push Food Web Frontend
         run: sudo docker push debdeep12/foodweb-frontend:latest
