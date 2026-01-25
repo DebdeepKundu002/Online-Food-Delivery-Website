@@ -17,7 +17,7 @@ jobs:
 
       # Food Web Frontend
       - name: Build Food Web Frontend
-        run: |
+        run: >
           sudo docker build --no-cache \
           -f "Frontend/Food Website/Food Website/user/Dockerfile" \
           --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
