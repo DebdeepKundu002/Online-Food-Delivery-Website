@@ -64,7 +64,6 @@ jobs:
             -f "Frontend/FoodOwner/FoodOwner/foodowner/Dockerfile" \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} \
-
             -t debdeep12/foodowner-frontend:latest \
             "Frontend/FoodOwner/FoodOwner/foodowner"
 
