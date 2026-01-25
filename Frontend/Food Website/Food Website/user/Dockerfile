@@ -33,6 +33,12 @@ RUN npm run build
 # ---------- Production Stage ----------
 FROM nginx:1.23-alpine
 
+# ❌ Remove default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
+
+# ✅ Copy custom nginx config (SPA support)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Remove default nginx content
 RUN rm -rf /usr/share/nginx/html/*
 
