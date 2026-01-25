@@ -25,7 +25,7 @@ const Footer = () => {
                         communities with delicious meals, fast service, and reliable
                         experiences—crafted with love by passionate creators.
                     </p>
-                    {/* <div className="footer-social-icons">
+                    <div className="footer-social-icons">
                         {facebookLinks.map((link, index) => (
                             link && (
                                 <a key={`fb-${index}`} href={link} target="_blank" rel="noreferrer">
@@ -41,8 +41,8 @@ const Footer = () => {
                                 </a>
                             )
                         ))}
-                    </div> */}
-                    <div className="footer-social-icons">
+                    </div>
+                    {/* <div className="footer-social-icons">
 
                         <a
                             href={import.meta.env.VITE_FACEBOOK_1 || "#"}
@@ -60,7 +60,7 @@ const Footer = () => {
                             <img src={linkedin_icon} alt="LinkedIn" />
                         </a>
 
-                    </div>
+                    </div> */}
 
 
 
