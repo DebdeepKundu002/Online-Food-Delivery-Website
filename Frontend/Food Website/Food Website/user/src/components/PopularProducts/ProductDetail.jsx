@@ -182,49 +182,117 @@ const ProductDetail = () => {
   //   }
   // };
 
+  // const BuyNow = async () => {
+  //   try {
+  //     // 🔐 CHECK LOGIN FIRST
+  //     const userId = await checkLogin();
+
+  //     if (!userId) {
+  //       alert("Please login to continue payment.");
+  //       // navigate("/login"); // or your login route
+  //       return;
+  //     }
+
+  //     // ✅ Fetch latest food status
+  //     const res = await axios.get(
+  //       `${import.meta.env.VITE_API_URL}/api/v1/food/get/${foodId}`,
+  //       { withCredentials: true }
+  //     );
+
+  //     const latestFood = res.data?.food;
+
+  //     if (!latestFood || latestFood.status !== "Available") {
+  //       alert("Sorry, this item is currently unavailable.");
+  //       return;
+  //     }
+
+  //     const options = {
+  //       key: import.meta.env.VITE_RAZORPAY_KEY, 
+  //       amount: totalPrice * 100,
+  //       currency: "INR",
+  //       name: "Food Faction",
+  //       description: "Payment Medium to Order Your Favorite Food",
+  //       image: "https://as1.ftcdn.net/v2/jpg/02/41/30/72/1000_F_241307210_MjjaJC3SJy2zJZ6B7bKGMRsKQbdwRSze.jpg",
+
+  //       handler: async function (response) {
+  //         alert("Payment Successful");
+
+  //         const body = {
+  //           userId,
+  //           cartItems: [
+  //             {
+  //               food: foodData._id,
+  //               quantity,
+  //               totalPrice,
+  //             },
+  //           ],
+  //           summary: {
+  //             totalItems: 1,
+  //             totalQuantity: quantity,
+  //             totalAmount: totalPrice,
+  //           },
+  //           transactionId: response.razorpay_payment_id,
+  //         };
+
+  //         const orderRes = await axios.post(
+  //           `${import.meta.env.VITE_API_URL}/api/v1/order/post`,
+  //           body,
+  //           { withCredentials: true }
+  //         );
+
+  //         if (orderRes.data.success) {
+  //           navigate(`/addLocation/${orderRes.data.data._id}`);
+  //         } else {
+  //           alert("Order failed.");
+  //         }
+  //       },
+  //     };
+
+  //     const rzp1 = new window.Razorpay(options);
+  //     rzp1.open();
+
+  //   } catch (error) {
+  //     console.error("BuyNow error:", error);
+  //     alert("Something went wrong. Please try again.");
+  //   }
+  // };
   const BuyNow = async () => {
     try {
-      // 🔐 CHECK LOGIN FIRST
       const userId = await checkLogin();
-
       if (!userId) {
         alert("Please login to continue payment.");
-        // navigate("/login"); // or your login route
         return;
       }
 
-      // ✅ Fetch latest food status
       const res = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/food/get/${foodId}`,
         { withCredentials: true }
       );
 
       const latestFood = res.data?.food;
-
       if (!latestFood || latestFood.status !== "Available") {
         alert("Sorry, this item is currently unavailable.");
         return;
       }
 
+      const razorKey = import.meta.env.VITE_RAZORPAY_KEY;
+      if (!razorKey) {
+        alert("Payment configuration error. Contact support.");
+        return;
+      }
+
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY, 
+        key: razorKey,
         amount: totalPrice * 100,
         currency: "INR",
         name: "Food Faction",
         description: "Payment Medium to Order Your Favorite Food",
-        image: "https://as1.ftcdn.net/v2/jpg/02/41/30/72/1000_F_241307210_MjjaJC3SJy2zJZ6B7bKGMRsKQbdwRSze.jpg",
 
         handler: async function (response) {
-          alert("Payment Successful");
-
           const body = {
             userId,
             cartItems: [
-              {
-                food: foodData._id,
-                quantity,
-                totalPrice,
-              },
+              { food: foodData._id, quantity, totalPrice }
             ],
             summary: {
               totalItems: 1,
@@ -253,9 +321,10 @@ const ProductDetail = () => {
 
     } catch (error) {
       console.error("BuyNow error:", error);
-      alert("Something went wrong. Please try again.");
+      alert("Something went wrong.");
     }
   };
+
 
 
   const handleWishlist = async () => {
