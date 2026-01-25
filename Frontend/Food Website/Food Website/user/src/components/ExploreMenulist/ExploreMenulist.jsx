@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import "./ExploreMenulist.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import allFood from "../assets/Allfood.jpg";
-import menu8 from "../assets/menu_8.png";
-import menu6 from "../assets/menu_6.png";
-import burger from "../assets/Br.jpg";
-import dessert from "../assets/menu_5.png";
-import drinks from "../assets/D2.png";
-import pizza from "../assets/Pizza.jpg";
+import allFood from "../../assets/Allfood.jpg";
+import menu8 from "../../assets/menu_8.png";
+import menu6 from "../../assets/menu_6.png";
+import burger from "../../assets/Br.jpg";
+import dessert from "../../assets/menu_5.png";
+import drinks from "../../assets/D2.png";
+import pizza from "../../assets/Pizza.jpg";
 
 
 const menu_list = [

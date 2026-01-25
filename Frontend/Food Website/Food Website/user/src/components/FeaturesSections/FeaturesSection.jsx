@@ -1,8 +1,8 @@
 import React from "react";
 import "./FeaturesSection.css";
-import discountImg from "../assets/discount.jpg";
-import gpsImg from "../assets/gps_symbol.jpg";
-import quickDeliveryImg from "../assets/quick-order-delivery.jpg";
+import discountImg from "../../assets/discount.jpg";
+import gpsImg from "../../assets/gps_symbol.jpg";
+import quickDeliveryImg from "../../assets/quick-order-delivery.jpg";
 
 
 // const features = [
