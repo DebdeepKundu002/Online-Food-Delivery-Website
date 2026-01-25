@@ -2,16 +2,25 @@ import React, { useEffect, useRef, useState } from "react";
 import "./ExploreMenulist.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import allFood from "../assets/Allfood.jpg";
+import menu8 from "../assets/menu_8.png";
+import menu6 from "../assets/menu_6.png";
+import burger from "../assets/Br.jpg";
+import dessert from "../assets/menu_5.png";
+import drinks from "../assets/D2.png";
+import pizza from "../assets/Pizza.jpg";
+
 
 const menu_list = [
-  { menu_name: "All", menu_image: "./src/assets/Allfood.jpg" },
-  { menu_name: "Nonveg", menu_image: "./src/assets/menu_8.png" },
-  { menu_name: "Veg", menu_image: "./src/assets/menu_6.png" },
-  { menu_name: "Burger", menu_image: "./src/assets/Br.jpg" },
-  { menu_name: "Dessert", menu_image: "./src/assets/menu_5.png" },
-  { menu_name: "Drinks", menu_image: "./src/assets/D2.png" },
-  { menu_name: "Pizza", menu_image: "./src/assets/Pizza.jpg" },
+  { menu_name: "All", menu_image: allFood },
+  { menu_name: "Nonveg", menu_image: menu8 },
+  { menu_name: "Veg", menu_image: menu6 },
+  { menu_name: "Burger", menu_image: burger },
+  { menu_name: "Dessert", menu_image: dessert },
+  { menu_name: "Drinks", menu_image: drinks },
+  { menu_name: "Pizza", menu_image: pizza },
 ];
+
 
 const ExploreMenulist = () => {
   const scrollRef = useRef(null);

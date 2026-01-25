@@ -1,20 +1,41 @@
 import React from "react";
 import "./FeaturesSection.css";
+import discountImg from "../assets/discount.jpg";
+import gpsImg from "../assets/gps_symbol.jpg";
+import quickDeliveryImg from "../assets/quick-order-delivery.jpg";
 
+
+// const features = [
+//   {
+//     id: 1,
+//     image: "./src/assets/discount.jpg",
+//     title: "Daily Discounts",
+//   },
+//   {
+//     id: 2,
+//     image: "./src/assets/gps_symbol.jpg",
+//     title: "Live Tracking",
+//   },
+//   {
+//     id: 3,
+//     image: "./src/assets/quick-order-delivery.jpg",
+//     title: "Quick Delivery",
+//   },
+// ];
 const features = [
   {
     id: 1,
-    image: "./src/assets/discount.jpg",
+    image: discountImg,
     title: "Daily Discounts",
   },
   {
     id: 2,
-    image: "./src/assets/gps_symbol.jpg",
+    image: gpsImg,
     title: "Live Tracking",
   },
   {
     id: 3,
-    image: "./src/assets/quick-order-delivery.jpg",
+    image: quickDeliveryImg,
     title: "Quick Delivery",
   },
 ];
