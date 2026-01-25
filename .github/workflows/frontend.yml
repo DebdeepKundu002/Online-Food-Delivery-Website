@@ -17,28 +17,47 @@ jobs:
 
       # Food Web Frontend
       - name: Build Food Web Frontend
-        run: sudo docker build --no-cache -f "Frontend/Food Website/Food Website/user/Dockerfile" --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} --build-arg VITE_RAZORPAY_KEY=${{ secrets.VITE_RAZORPAY_KEY }} --build-arg VITE_FACEBOOK_1=${{ secrets.VITE_FACEBOOK_1 }} --build-arg VITE_FACEBOOK_2=${{ secrets.VITE_FACEBOOK_2 }} --build-arg VITE_LINKEDIN_1=${{ secrets.VITE_LINKEDIN_1 }} --build-arg VITE_LINKEDIN_2=${{ secrets.VITE_LINKEDIN_2 }} -t debdeep12/foodweb-frontend:latest "Frontend/Food Website/Food Website/user"
+        run: |
+          bash -c 'sudo docker build --no-cache -f "Frontend/Food Website/Food Website/user/Dockerfile" \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} \
+          --build-arg VITE_RAZORPAY_KEY=${{ secrets.VITE_RAZORPAY_KEY }} \
+          --build-arg VITE_FACEBOOK_1=${{ secrets.VITE_FACEBOOK_1 }} \
+          --build-arg VITE_FACEBOOK_2=${{ secrets.VITE_FACEBOOK_2 }} \
+          --build-arg VITE_LINKEDIN_1=${{ secrets.VITE_LINKEDIN_1 }} \
+          --build-arg VITE_LINKEDIN_2=${{ secrets.VITE_LINKEDIN_2 }} \
+          -t debdeep12/foodweb-frontend:latest "Frontend/Food Website/Food Website/user"'
 
       - name: Push Food Web Frontend
         run: sudo docker push debdeep12/foodweb-frontend:latest
 
       # Delivery Boy Frontend
       - name: Build Delivery Boy Frontend
-        run: sudo docker build --no-cache -f "Frontend/Delivary Boy/Delivary Boy/delivaryboy/Dockerfile" --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} -t debdeep12/deliveryboy-frontend:latest "Frontend/Delivary Boy/Delivary Boy/delivaryboy"
+        run: |
+          bash -c 'sudo docker build --no-cache -f "Frontend/Delivary Boy/Delivary Boy/delivaryboy/Dockerfile" \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          -t debdeep12/deliveryboy-frontend:latest "Frontend/Delivary Boy/Delivary Boy/delivaryboy"'
 
       - name: Push Delivery Boy Frontend
         run: sudo docker push debdeep12/deliveryboy-frontend:latest
 
       # Admin Frontend
       - name: Build Admin Frontend
-        run: sudo docker build --no-cache -f "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend/Dockerfile" --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} -t debdeep12/admin-frontend:latest "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend"
+        run: |
+          bash -c 'sudo docker build --no-cache -f "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend/Dockerfile" \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          -t debdeep12/admin-frontend:latest "Frontend/Admin_Food Frontend Website/Admin_Food Frontend Website/frontend"'
 
       - name: Push Admin Frontend
         run: sudo docker push debdeep12/admin-frontend:latest
 
       # Food Owner Frontend
       - name: Build Food Owner Frontend
-        run: sudo docker build --no-cache -f "Frontend/FoodOwner/FoodOwner/foodowner/Dockerfile" --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} -t debdeep12/foodowner-frontend:latest "Frontend/FoodOwner/FoodOwner/foodowner"
+        run: |
+          bash -c 'sudo docker build --no-cache -f "Frontend/FoodOwner/FoodOwner/foodowner/Dockerfile" \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          --build-arg VITE_CLOUDINARY_API=${{ secrets.VITE_CLOUDINARY_API }} \
+          -t debdeep12/foodowner-frontend:latest "Frontend/FoodOwner/FoodOwner/foodowner"'
 
       - name: Push Food Owner Frontend
         run: sudo docker push debdeep12/foodowner-frontend:latest
