@@ -181,3 +181,85 @@
   opacity: 0.8;
 }
 
+@media (max-width: 320px) {
+  .section-title {
+    font-size: 22px;
+  }
+
+  .category-container {
+    max-width: 100%;
+  }
+
+  .category-item {
+    margin: 0 6px;
+    padding: 8px;
+  }
+
+  .category-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .food-card {
+    width: 180px;
+    padding: 12px;
+  }
+
+  .food-card img {
+    height: 110px;
+  }
+
+  .scroll-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .section-title {
+    font-size: 24px;
+  }
+
+  .food-card {
+    width: 190px;
+  }
+
+  .food-card img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 425px) {
+  .section-title {
+    font-size: 26px;
+  }
+
+  .category-container {
+    max-width: 100%;
+  }
+
+  .food-card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 30px;
+  }
+
+  .category-container {
+    max-width: 90%;
+  }
+
+  .food-card {
+    width: 210px;
+  }
+
+  .scroll-btn.left {
+    left: -10px;
+  }
+
+  .scroll-btn.right {
+    right: -10px;
+  }
+}

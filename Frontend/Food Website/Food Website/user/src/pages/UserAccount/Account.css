@@ -1,4 +1,7 @@
-/* Main Profile Container */
+/* =========================
+   BASE STYLES (Desktop Default)
+   ========================= */
+
 .profile-container {
   display: flex;
   width: 700px;
@@ -76,11 +79,7 @@
   color: #222;
 }
 
-/* User Info Block */
-.step {
-  margin-bottom: 20px;
-}
-
+/* User Info */
 .step p {
   margin: 8px 0;
   font-size: 16px;
@@ -89,10 +88,9 @@
 
 .s {
   font-weight: bold;
-  margin-right: 5px;
 }
 
-/* Action Buttons */
+/* Buttons */
 .profile-actions {
   display: flex;
   gap: 15px;
@@ -106,24 +104,148 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .edit-btn {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
   color: white;
-}
-
-.edit-btn:hover {
-  background-color: #388e3c;
 }
 
 .delete-btn {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
   color: white;
-  margin-left: 80px;
 }
 
-.delete-btn:hover {
-  background-color: #d32f2f;
+/* =========================
+   LAPTOP L (1440px)
+   ========================= */
+@media (max-width: 1440px) {
+  .profile-container {
+    width: 750px;
+  }
+}
+
+/* =========================
+   LAPTOP (1024px)
+   ========================= */
+@media (max-width: 1024px) {
+  .profile-container {
+    width: 90%;
+    height: auto;
+  }
+
+  .profile-photo-section {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* =========================
+   TABLET (768px)
+   ========================= */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .profile-left,
+  .profile-right {
+    width: 100%;
+  }
+
+  .profile-left {
+    padding: 25px;
+  }
+
+  .profile-right {
+    padding: 20px;
+  }
+
+  .profile-actions {
+    justify-content: center;
+  }
+}
+
+/* =========================
+   MOBILE L (425px)
+   ========================= */
+@media (max-width: 425px) {
+  .profile-container {
+    width: 95%;
+    margin-top: 40px;
+  }
+
+  .profile-photo-section {
+    width: 110px;
+    height: 110px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .step p {
+    font-size: 14px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE M (375px)
+   ========================= */
+@media (max-width: 375px) {
+  .profile-photo-section {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .step p {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   MOBILE S (320px)
+   ========================= */
+@media (max-width: 320px) {
+  .profile-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .profile-photo-section {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-name {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .step p {
+    font-size: 12px;
+  }
 }

@@ -123,3 +123,106 @@
   color: #6c5ce7;
   font-weight: 500;
 }
+
+/* =========================
+   Small Mobile (320px)
+========================= */
+@media (max-width: 360px) {
+  .view-container {
+    padding: 25px 12px;
+  }
+
+  .view-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .view-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .view-image {
+    height: 170px;
+  }
+
+  .view-name {
+    font-size: 1.2rem;
+  }
+
+  .view-description {
+    font-size: 0.85rem;
+    height: 40px;
+  }
+
+  .view-rating {
+    font-size: 0.9rem;
+  }
+
+  .view-hours {
+    font-size: 0.85rem;
+  }
+
+  .view-status-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .view-discount,
+  .view-fast {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+}
+
+/* =========================
+   Medium Mobile (375px)
+========================= */
+@media (min-width: 361px) and (max-width: 480px) {
+  .view-container {
+    padding: 30px 15px;
+  }
+
+  .view-title {
+    font-size: 2rem;
+  }
+
+  .view-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .view-image {
+    height: 180px;
+  }
+
+  .view-name {
+    font-size: 1.25rem;
+  }
+
+  .view-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   Tablets (Portrait & Landscape)
+========================= */
+@media (min-width: 481px) and (max-width: 768px) {
+  .view-container {
+    padding: 35px 18px;
+  }
+
+  .view-title {
+    font-size: 2.2rem;
+  }
+
+  .view-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .view-image {
+    height: 190px;
+  }
+}

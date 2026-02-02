@@ -13,7 +13,7 @@ const Header = () => {
     <div className='header'>
       <div className="header-contents">
         <h2>Order your favourite food here</h2>
-        <p className='content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique dolorem, dicta itaque iure fugiat architecto.</p>
+        <p className='content'>Craving something delicious? Explore our menu and order your favorites in seconds.</p>
         <a href="#menu"><button className = "butn" onClick={scrollToSection}>View Menu</button></a>
       </div>
     </div>

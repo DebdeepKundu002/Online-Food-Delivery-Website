@@ -122,3 +122,148 @@ td.delivered {
 td.canceled {
   color: red;
 }
+
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+/* Tablets (<= 1024px) */
+@media (max-width: 1024px) {
+  .order-list-container {
+    padding: 16px;
+  }
+
+  .titleo {
+    font-size: 1.9rem;
+  }
+
+  .food-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .order-table th,
+  .order-table td {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Large (<= 768px) */
+@media (max-width: 768px) {
+  .order-table {
+    font-size: 0.9rem;
+  }
+
+  .food-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .order-table th {
+    font-size: 0.95rem;
+  }
+
+  .cancel-button {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===============================
+   MOBILE VIEW (<= 480px)
+   =============================== */
+
+@media (max-width: 480px) {
+  .order-list-container {
+    padding: 10px;
+  }
+
+  .titleo {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  /* Enable smooth horizontal scroll */
+  .order-table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .order-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .order-table th,
+  .order-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .order-table th {
+    font-size: 0.9rem;
+  }
+
+  /* Image optimization */
+  .food-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+  }
+
+  /* Counter column narrower */
+  .order-table td:nth-child(5),
+  .order-table th:nth-child(5) {
+    max-width: 120px;
+  }
+
+  /* Status / Action column */
+  .order-table td:last-child {
+    min-width: 90px;
+  }
+
+  .cancel-button {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    border-radius: 4px;
+  }
+
+  .view-more-button {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .no-orders-text {
+    font-size: 1rem;
+    margin: 40px 0;
+  }
+}
+
+/* ===============================
+   EXTRA SMALL DEVICES (<= 360px)
+   =============================== */
+
+@media (max-width: 360px) {
+  .food-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .order-table th,
+  .order-table td {
+    font-size: 0.78rem;
+    padding: 6px 8px;
+  }
+
+  .cancel-button {
+    font-size: 0.7rem;
+    padding: 4px 6px;
+  }
+}

@@ -44,7 +44,7 @@ const Testimonials = () => {
     <div className="testimonial-containerxx">
       <h2 className="testimonial-title">Our Clients Say!</h2>
       <p className="testimonial-subtitle">
-        Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit.
+        Real stories from real people who trusted us and loved the results we delivered.
       </p>
 
       <div className="testimonial-wrapper">

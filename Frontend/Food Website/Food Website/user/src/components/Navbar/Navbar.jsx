@@ -57,6 +57,7 @@ const Navbar = ({ setShowLogin }) => {
 
   // Default full Navbar
   return (
+    <>
     <div className='navbar'>
       <Link to='/'><div className='food'>Food Faction</div></Link>
       <ul className="navbar-menu">
@@ -92,6 +93,15 @@ const Navbar = ({ setShowLogin }) => {
         )}
       </div>
     </div>
+    {/* ✅ MOBILE HORIZONTAL SCROLL MENU */}
+      <div className="mobile-menu">
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/explore-menu-list">Menu</Link>
+        <Link to="/viewfoodcart">Food Carts</Link>
+        <a href="#footer">Contact</a>
+      </div>
+    </>
   );
 };
 
